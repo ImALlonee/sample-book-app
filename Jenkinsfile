@@ -21,7 +21,7 @@ pipeline {
         stage('Tests on DEV') {
             steps {
                 script{
-                    test("DEV")
+                    test("DEV", "BOOKS")
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
         stage('Tests on STG') {
             steps {
                 script{
-                    test("STG")
+                    test("STG", "BOOKS")
                 }
             }
         }
@@ -49,7 +49,7 @@ pipeline {
         stage('Tests on PRD') {
             steps {
                 script{
-                    test("PRD")
+                    test("PRD", "BOOKS")
                 }
             }
         }
@@ -71,8 +71,9 @@ def deploy(String environment, int port){
     bat "node_modules/.bin/pm2 start -n \"books-${environment}\" index.js -- ${port}"
 }
 
-def test(String environment){
-    echo "Testing to ${environment} has started.."
+def test(String environment, String test_set){
+    echo "Testing ${test_set} test set to ${environment} has started.."
+    bat "npm run ${test_set} ${test_set}_${environment}" 
 }
 
 // Būvējuma izveidi;
