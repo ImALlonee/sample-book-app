@@ -66,14 +66,13 @@ def build(){
 
 def deploy(String environment, int port){
     echo "Deployment to ${environment} has started.."
-    bat "pm2 delete \"books-${environment}\""
-    bat "pm2 start -n \"books-${environment}\" index.js -- ${port}"
+    bat "node_modules/.bin/pm2 delete \"books-${environment}\""
+    bat "node_modules/.bin/pm2 start -n \"books-${environment}\" index.js -- ${port}"
 }
 
 def test(String environment){
     echo "Testing to ${environment} has started.."
 }
-
 
 // Būvējuma izveidi;
 // Būvējuma izvietošanu “DEV” vidē;
