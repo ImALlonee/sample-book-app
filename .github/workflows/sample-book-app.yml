@@ -9,51 +9,65 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  builds:
+  build:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3.5.2
-      - name: Print output
-        run: echo Building of node application is starting..
+      - uses: ./.github/actions/build
+
   deploy-dev:
     runs-on: self-hosted
-    needs: [builds]
+    needs: [build]
     steps:
       - uses: actions/checkout@v3.5.2
-      - name: Print output
-        run: echo Deployment to DEV has started..
+      - uses: ./.github/actions/deploy
+        with:
+          port: 1010
+          environment: 'DEV'
+
   test-dev:
     runs-on: self-hosted
     needs: [deploy-dev]
     steps:
       - uses: actions/checkout@v3.5.2
-      - name: Print output
-        run: echo Testing BOOKS test set on DEV has started..
+      - uses: ./.github/actions/test
+        with:
+          environment: 'DEV'
+
   deploy-stg:
     runs-on: self-hosted
     needs: [test-dev]
     steps:
       - uses: actions/checkout@v3.5.2
-      - name: Print output
-        run: echo Deployment to STG has started..
+      - uses: ./.github/actions/deploy
+        with:
+          port: 2020
+          environment: 'STG'
+
   test-stg:
     runs-on: self-hosted
     needs: [deploy-stg]
     steps:
       - uses: actions/checkout@v3.5.2
-      - name: Print output
-        run: echo Testing BOOKS test set on STG has started..
+      - uses: ./.github/actions/test
+        with:
+          environment: 'STG'
+
   deploy-prd:
     runs-on: self-hosted
     needs: [test-stg]
     steps:
       - uses: actions/checkout@v3.5.2
-      - name: Print output
-        run: echo Deployment to PRD has started..
+      - uses: ./.github/actions/deploy
+        with:
+          port: 3030
+          environment: 'PRD'
+
   test-prd:
     runs-on: self-hosted
     needs: [deploy-prd]
     steps:
       - uses: actions/checkout@v3.5.2
-      - name: Print output
-        run: echo Testing BOOKS test set on PRD has started..
+      - uses: ./.github/actions/test
+        with:
+          environment: 'PRD'

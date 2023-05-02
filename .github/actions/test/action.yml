@@ -1,0 +1,16 @@
+inputs:
+  test_set:
+    description: 'Specify test set to run'
+    default: 'BOOKS'
+  environment:
+    description: 'Testing environment'
+    default: 'DEV'
+runs:
+  using: "composite"
+  steps: 
+    - name: Install dependencies and run tests
+      run:
+        echo Testing ${{ inputs.test_set }} test set on ${{ inputs.environment }} has started..
+        npm install
+        npm run ${{ inputs.test_set }} ${{ inputs.test_set }}_${{ inputs.environment }}
+    - shell: cmd

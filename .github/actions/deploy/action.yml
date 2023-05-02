@@ -1,0 +1,22 @@
+inputs:
+  port:
+    description: 'Specify port for node application to run'
+    default: 1010
+  environment:
+    description: 'Environment for sample node application'
+    default: 'DEV'
+runs:
+  using: "composite"
+  steps: 
+    - name: Print output
+      run: echo Deployment to ${{ inputs.environment }} has started..
+      shell: cmd
+    - name: Install dependencies
+      run : npm install
+      shell: cmd
+    - name: Delete service
+      run : pm2 delete "books-${{ inputs.environment }}"
+      shell: cmd
+    - name: Start service
+      run : pm2 start -n "books-${{ inputs.environment }}" index.js -- ${{ inputs.port }}
+      shell: cmd
