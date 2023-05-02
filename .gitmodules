@@ -1,3 +1,3 @@
 [submodule "prj"]
 	path = actions-runner/_work/sample-book-app/sample-book-app
-	url = https://github.com/ImALlonee/sample-book-app.git
+	url = git://github.com/ImALlonee/sample-book-app.git
