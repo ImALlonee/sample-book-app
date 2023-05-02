@@ -67,6 +67,7 @@ def build(){
 
 def deploy(String environment, int port){
     echo "Deployment to ${environment} has started.."
+    git branch: 'main', url: 'https://github.com/ImALlonee/sample-book-app.git'
     bat "node_modules/.bin/pm2 delete \"books-${environment}\""
     bat "node_modules/.bin/pm2 start -n \"books-${environment}\" index.js -- ${port}"
 }
@@ -75,6 +76,7 @@ def test(String environment, String test_set){
     echo "Testing ${test_set} test set to ${environment} has started.."
     git branch: 'main', poll: false, url: 'https://github.com/ImALlonee/course-js-api-framework.git'
     bat "dir"
+    bat "npm install"
     bat "npm run ${test_set} ${test_set}_${environment}" 
 }
 
