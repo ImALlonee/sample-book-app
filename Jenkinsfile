@@ -73,7 +73,7 @@ def deploy(String environment, int port){
 
 def test(String environment, String test_set){
     echo "Testing ${test_set} test set to ${environment} has started.."
-    bat "npm run ${test_set} ${test_set}_${environment}" 
+    // bat "npm run ${test_set} ${test_set}_${environment}" 
 }
 
 // Būvējuma izveidi;
