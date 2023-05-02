@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "ImALlonee/sample-book-app",
+  "pipelineDirectory": "sample-book-app",
+  "workspaceDirectory": "sample-book-app\\sample-book-app",
+  "repositories": {
+    "ImALlonee/sample-book-app": {
+      "repositoryPath": "sample-book-app\\sample-book-app",
+      "lastRunOn": "05/02/2023 13:02:51 +03:00"
+    }
+  },
+  "lastRunOn": "05/02/2023 13:05:18 +03:00"
+}

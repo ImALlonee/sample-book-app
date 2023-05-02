@@ -1,0 +1,9 @@
+﻿{
+  "agentId": 2,
+  "agentName": "DESKTOP-K525J50",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelines.actions.githubusercontent.com/0BUUVqq9mI2fD7O34auG9JuszF8ZhVQTqJXGih51Cx0E4F1uUs",
+  "gitHubUrl": "https://github.com/ImALlonee/sample-book-app",
+  "workFolder": "_work"
+}
