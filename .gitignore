@@ -132,3 +132,5 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+actions-runner/_work/_PipelineMapping/ImALlonee/sample-book-app/PipelineFolder.json
+actions-runner/_work/_actions/actions/checkout/v3.5.2.completed

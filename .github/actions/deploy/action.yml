@@ -15,7 +15,7 @@ runs:
       run : npm install
       shell: cmd
     - name: Delete service
-      run : pm2 delete "books-${{ inputs.environment }}"
+      run : pm2 delete "books-${{ inputs.environment }}" || true
       shell: cmd
     - name: Start service
       run : pm2 start -n "books-${{ inputs.environment }}" index.js -- ${{ inputs.port }}
