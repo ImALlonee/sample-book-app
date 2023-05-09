@@ -10,16 +10,14 @@ runs:
   steps: 
     - name: Install dependencies and run tests
       working-directory: api-tests
-      run:
+      run: |
         echo Testing ${{ inputs.test_set }} test set on ${{ inputs.environment }} has started..
         npm install
         npm run ${{ inputs.test_set }} ${{ inputs.test_set }}_${{ inputs.environment }}
-      shell: cmd
-    - name: List directories and files
-      run: dir api-tests
+        dir
       shell: cmd
     - name: Upload report as artifact
       uses: actions/upload-artifact@v3
       with:
         name: test-report
-        path:  api-tests/mochawesome-report/
+        path:  api-tests/mochawesome-report
