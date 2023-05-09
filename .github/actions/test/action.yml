@@ -8,13 +8,21 @@ inputs:
 runs:
   using: "composite"
   steps: 
-    - name: Install dependencies and run tests
+    - name: Print testing start
       working-directory: api-tests
-      run: |
-        echo Testing ${{ inputs.test_set }} test set on ${{ inputs.environment }} has started..
-        npm install
-        npm run ${{ inputs.test_set }} ${{ inputs.test_set }}_${{ inputs.environment }}
-        dir
+      run: echo Testing ${{ inputs.test_set }} test set on ${{ inputs.environment }} has started..
+      shell: cmd
+    - name: Install dependencies
+      working-directory: api-tests
+      run : npm install
+      shell: cmd
+    - name: Start testing
+      working-directory: api-tests
+      run : npm run ${{ inputs.test_set }} ${{ inputs.test_set }}_${{ inputs.environment }}
+      shell: cmd
+    - name: List directories and files
+      working-directory: api-tests
+      run : dir
       shell: cmd
     - name: Upload report as artifact
       uses: actions/upload-artifact@v3
