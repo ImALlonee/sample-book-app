@@ -16,7 +16,7 @@ runs:
       working-directory: api-tests
       run : npm install
       shell: cmd
-    - name: Start testing
+    - name: Run testing
       working-directory: api-tests
       run : npm run ${{ inputs.test_set }} ${{ inputs.test_set }}_${{ inputs.environment }}
       shell: cmd
@@ -24,4 +24,4 @@ runs:
       uses: actions/upload-artifact@v3
       with:
         name: test-report
-        path:  api-tests/mochawesome-report
+        path: api-tests/mochawesome-report
