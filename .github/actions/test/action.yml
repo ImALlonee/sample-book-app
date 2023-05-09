@@ -14,6 +14,7 @@ runs:
         echo Testing ${{ inputs.test_set }} test set on ${{ inputs.environment }} has started..
         npm install
         npm run ${{ inputs.test_set }} ${{ inputs.test_set }}_${{ inputs.environment }}
+        ls
       shell: cmd
     - name: Upload report as artifact
       uses: actions/upload-artifact@v3
