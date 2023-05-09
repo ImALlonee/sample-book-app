@@ -20,10 +20,6 @@ runs:
       working-directory: api-tests
       run : npm run ${{ inputs.test_set }} ${{ inputs.test_set }}_${{ inputs.environment }}
       shell: cmd
-    - name: List directories and files
-      working-directory: api-tests
-      run : dir
-      shell: cmd
     - name: Upload report as artifact
       uses: actions/upload-artifact@v3
       with:
