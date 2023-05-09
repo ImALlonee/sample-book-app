@@ -9,8 +9,15 @@ runs:
   using: "composite"
   steps: 
     - name: Install dependencies and run tests
+      working-directory: api-tests
       run:
         echo Testing ${{ inputs.test_set }} test set on ${{ inputs.environment }} has started..
         npm install
         npm run ${{ inputs.test_set }} ${{ inputs.test_set }}_${{ inputs.environment }}
       shell: cmd
+    - name: Upload report as artifact
+      working-directory: api-tests
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-report
+        path: mochawesome-report
