@@ -13,4 +13,4 @@ runs:
         echo Testing ${{ inputs.test_set }} test set on ${{ inputs.environment }} has started..
         npm install
         npm run ${{ inputs.test_set }} ${{ inputs.test_set }}_${{ inputs.environment }}
-    - shell: cmd
+      shell: cmd

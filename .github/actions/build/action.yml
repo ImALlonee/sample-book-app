@@ -5,5 +5,4 @@ runs:
       run: 
         echo Building of node application is starting..
         npm install
-      shell: cmd 
-    
+      shell: cmd
